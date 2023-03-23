@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
+import CardService from './services/cardService';
 import './App.css';
 
-function App() {
+const App = () => { 
+  useEffect(() => {
+    const cardService = new CardService();
+    const fetchNewDeck = async () => {
+      const newDeck = await cardService.createNewShuffledDeck();
+      console.log(newDeck);
+    }
+    fetchNewDeck();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
