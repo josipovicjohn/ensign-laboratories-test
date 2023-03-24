@@ -22,6 +22,7 @@ class CardService implements ICardService {
 
     // Discards card after it has been drawn.
     // NB: Error checking to be performed for invalid card codes.
+    // NB: Method may not be needed - as you cannot draw already drawn cards from a single deck.
     public async discardCard(deckID: string, pileName: string, cardCode: string): Promise<DiscardCards> {
         const result = await axios.get(`${DECK_OF_CARDS_API_URL}/deck/${deckID}/pile/${pileName}/add/?cards=${cardCode}`);
         return result.data as DiscardCards

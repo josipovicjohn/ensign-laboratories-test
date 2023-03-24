@@ -1,0 +1,39 @@
+.custom-button {
+    width: 200px;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.custom-button:hover {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: #949BA0;
+    border: 1px solid #949BA0;
+}
+
+.draw {
+    background-color: #F29559;
+    border: 1px solid #F29559;
+}
+
+.higher {
+    background-color: #16C172;
+    border: 1px solid #16C172;
+    width: 90px;
+}
+
+.lower {
+    background-color: #E77474;
+    border: 1px solid #E77474;
+    width: 90px;
+}
+
+.reset {
+    background-color: transparent;
+    border: 1px solid #F29559;
+}
