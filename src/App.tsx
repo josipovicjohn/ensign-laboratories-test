@@ -3,12 +3,15 @@ import CardService from './services/cardService';
 import Card from './components/card/card';
 import Button from './components/button/button';
 import { DrawnCards } from './types/types';
+import { CARD_RANKS } from './constants/constants';
 
 import './App.css';
 
 const cardService = new CardService();
 
 const App = () => { 
+  const [points, setPoints] = useState<number>(0);
+  const [higherGuess, setHigherGuess] = useState<null | boolean>(null);
   const [deckID, setDeckID] = useState<undefined | string>(undefined);
   const [drawnCardState, setDrawnCardState] = useState<null | DrawnCards>(null);
 
@@ -41,8 +44,17 @@ const App = () => {
   
   return (
     <div className="App">
+
+      {/* points container */}
+      <div className='spacing'>
+        <p className='points'>POINTS: {points}</p>
+      </div>
+
       {/* Playing card */}
-      {drawnCardState !== null ? <Card imageURL={drawnCardState.cards[0].image} imageCode={drawnCardState.cards[0].code}></Card> : <></>}
+      {drawnCardState !== null
+        ? <Card imageURL={drawnCardState.cards[0].image} imageCode={drawnCardState.cards[0].code}></Card> 
+        : <></>
+      }
       
       {/* Game buttons */}
       <div className='buttons-container'>
