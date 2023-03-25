@@ -11,9 +11,9 @@
 }
 
 .disabled {
-    pointer-events: none;
-    background-color: #949BA0;
-    border: 1px solid #949BA0;
+    pointer-events: none !important;
+    background-color: #949BA0 !important;
+    border: 1px solid #949BA0 !important;
 }
 
 .higher {

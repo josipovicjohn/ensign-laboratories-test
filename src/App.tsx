@@ -113,8 +113,8 @@ const App = () => {
         {/* High guess and low guess buttons */}
         <div className='spacing'>
           <div className='high-low-container'>
-            <Button type='higher' disabled={false} onClick={handleHigherGuess} />
-            <Button type='lower' disabled={false} onClick={handleLowerGuess} />
+            <Button type='higher' disabled={gameOver} onClick={handleHigherGuess} />
+            <Button type='lower' disabled={gameOver} onClick={handleLowerGuess} />
           </div>
         </div>
 

@@ -17,7 +17,7 @@ const Button = (props: ButtonProps): JSX.Element => {
 
     const getButtonClassName = (buttonType: ButtonType, disabled: boolean): string => {
         if (disabled) {
-            return 'disabled';
+            return `${buttonType} disabled`;
         }
 
         return buttonType;
