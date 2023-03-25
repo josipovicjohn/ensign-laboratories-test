@@ -11,8 +11,8 @@ export const CARD_RANKS = new Map<string, number>([
     ['8', 8],
     ['9', 9],
     ['10', 10],
-    ['J', 11],
-    ['Q', 12],
-    ['K', 13],
-    ['A', 14]
+    ['JACK', 11],
+    ['QUEEN', 12],
+    ['KING', 13],
+    ['ACE', 14]
 ])

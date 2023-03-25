@@ -1,7 +1,6 @@
 import './button.css';
 
 type ButtonType = 
-    | 'draw'
     | 'higher'
     | 'lower'
     | 'reset'
