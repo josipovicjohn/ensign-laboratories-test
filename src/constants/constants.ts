@@ -15,4 +15,4 @@ export const CARD_RANKS = new Map<string, number>([
     ['QUEEN', 12],
     ['KING', 13],
     ['ACE', 14]
-])
+]);

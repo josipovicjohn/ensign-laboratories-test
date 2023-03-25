@@ -7,6 +7,11 @@
   width: 200px;
 }
 
+.message {
+  display: grid;
+  justify-content: center;
+}
+
 .high-low-container {
   display: grid;
   grid-template-columns: auto auto;

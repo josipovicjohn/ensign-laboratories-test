@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import CardService from './services/cardService';
 import Card from './components/card/card';
 import Button from './components/button/button';
+import Banner from './components/banner/banner';
 import { DrawnCards } from './types/types';
 import { CARD_RANKS } from './constants/constants';
 
@@ -121,8 +122,11 @@ const App = () => {
         {/* Reset game button */}
         <Button type='reset' disabled={false} onClick={handleResetGame} />
 
-        {/* Game over text */}
       </div>
+
+      {/* Game over text */}
+      {gameOver === true && userWin && <div className='spacing message'><Banner message='YOU WIN!' /></div>}
+      {gameOver === true && !userWin && <div className='spacing message'><Banner message='YOU LOSE!' /></div>}
 
 
     </div>

@@ -1,0 +1,12 @@
+.banner-container {
+    background-color: #AED1E6;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.banner-container p {
+    font-weight: bold;
+}
