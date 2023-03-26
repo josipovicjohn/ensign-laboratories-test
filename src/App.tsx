@@ -80,13 +80,8 @@ const App = () => {
         setGameOver(true);
         setUserWin(true);
       }
-  
-      else if (points <= -5 && drawnCardState.remaining >= 0) {
-        setGameOver(true);
-        setUserWin(false);
-      }
 
-      else if ((points > -5 && drawnCardState.remaining === 0) || (points < 5 && drawnCardState.remaining === 0)) {
+      else if ((points <= -5 && drawnCardState.remaining >= 0) || (points > -5 && drawnCardState.remaining === 0) || (points < 5 && drawnCardState.remaining === 0) ) {
         setGameOver(true);
         setUserWin(false);
       }
