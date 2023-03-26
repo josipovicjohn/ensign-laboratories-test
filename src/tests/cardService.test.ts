@@ -33,7 +33,7 @@ describe('Card Service', () => {
 
         expect(data).toBeDefined();
         expect(data.success).toEqual(true);
-        expect(data.deck_id).toEqual(newDeck.deck_id)
+        expect(data.deck_id).toEqual(newDeck.deck_id);
         expect(data.cards).toHaveLength(1);
         expect(data.remaining).toEqual(51);
 
