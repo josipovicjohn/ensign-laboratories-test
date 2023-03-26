@@ -19,7 +19,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [userWin, setUserWin] = useState<null | boolean>(null);
 
-  const initGame = useCallback(async () => {
+  const initGame = useCallback(async (): Promise<void> => {
     setLoading(true);
     const newDeck = await cardService.createNewShuffledDeck();
     const deckID = newDeck.deck_id;
@@ -33,11 +33,11 @@ const App = () => {
 
   }, []);
 
-  const handleResetGame = useCallback(async () => {
+  const handleResetGame = useCallback(async (): Promise<void> => {
     initGame();
   }, [initGame]);
 
-  const handleGuess = useCallback(async (guess: Guess) => {
+  const handleGuess = useCallback(async (guess: Guess): Promise<void> => {
     if (deckID !== undefined && drawnCardState !== null && drawnCardState.remaining > 0) {
       setLoading(true);
       const nextDrawnCard = await cardService.drawCard(deckID);
