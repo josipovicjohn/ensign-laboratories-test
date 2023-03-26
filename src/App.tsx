@@ -44,7 +44,6 @@ const App = () => {
       setDrawnCardState(nextDrawnCard);
 
       if (guess === 'higher') {
-        // NB: Assume that if the user guesses higher and the next card is of equal value it is valid.
         if (nextDrawnCardValue >= currentCardValue) {
           setPoints(points + 1);
           return;
@@ -83,7 +82,6 @@ const App = () => {
         setUserWin(false);
       }
 
-      // NB: Assume user loses if they dont reach 5 points before the deck finishes.
       else if ((points > -5 && drawnCardState.remaining === 0) || (points < 5 && drawnCardState.remaining === 0)) {
         setGameOver(true);
         setUserWin(false);

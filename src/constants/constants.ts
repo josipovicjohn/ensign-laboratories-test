@@ -1,6 +1,5 @@
 export const DECK_OF_CARDS_API_URL = 'https://deckofcardsapi.com/api';
 
-// NB: Assume no jokers.
 export const CARD_RANKS = new Map<string, number>([
     ['2', 2],
     ['3', 3],

@@ -8,7 +8,6 @@ interface ICardService {
 }
 
 class CardService implements ICardService {
-    // Assume deck count is 1.
     public async createNewShuffledDeck(): Promise<Deck> {
         const result = await axios.get(`${DECK_OF_CARDS_API_URL}/deck/new/shuffle/?deck_count=1`);
         return result.data as Deck;
