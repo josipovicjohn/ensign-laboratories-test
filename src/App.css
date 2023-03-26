@@ -30,7 +30,7 @@
   width: 90px;
 }
 
-.message-container {
+.message-container, #points-container {
   display: grid;
   justify-content: center;
   min-width: 200px;

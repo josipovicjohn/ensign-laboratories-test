@@ -93,7 +93,7 @@ const App = () => {
     <div id="app">
 
       {/* Points container */}
-      <div className='spacing'>
+      <div className='spacing' id='points-container'>
         <p id='points'>POINTS: {points}</p>
       </div>
 
