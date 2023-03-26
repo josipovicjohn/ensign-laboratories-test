@@ -15,7 +15,7 @@ class CardService implements ICardService {
 
     public async drawCard(deckID: string): Promise<DrawnCards> {
         const result = await axios.get(`${DECK_OF_CARDS_API_URL}/deck/${deckID}/draw/?count=1`);
-        return result.data as DrawnCards
+        return result.data as DrawnCards;
     }
 
 }
