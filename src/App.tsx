@@ -3,7 +3,7 @@ import CardService from './services/cardService';
 import Card from './components/card/card';
 import Button from './components/button/button';
 import Banner from './components/banner/banner';
-import { DrawnCards } from './types/types';
+import { DrawnCards, Guess } from './types/types';
 import { CARD_RANKS } from './constants/constants';
 
 import './App.css';
@@ -34,7 +34,7 @@ const App = () => {
     initGame();
   }, [initGame]);
 
-  const handleHigherGuess = useCallback(async () => {
+  const handleGuess = useCallback(async (guess: Guess) => {
     if (deckID !== undefined && drawnCardState !== null && drawnCardState.remaining > 0) {
       const nextDrawnCard = await cardService.drawCard(deckID);
 
@@ -43,29 +43,27 @@ const App = () => {
 
       setDrawnCardState(nextDrawnCard);
 
-      // NB: Assume that if the user guesses higher and the next card is of equal value it is valid.
-      if (nextDrawnCardValue >= currentCardValue) {
-        setPoints(points + 1);
-      } else {
-        setPoints(points - 1);
+      if (guess === 'higher') {
+        // NB: Assume that if the user guesses higher and the next card is of equal value it is valid.
+        if (nextDrawnCardValue >= currentCardValue) {
+          setPoints(points + 1);
+          return;
+        } else {
+          setPoints(points - 1);
+          return;
+        }
       }
-    }
-  }, [deckID, drawnCardState, points]);
 
-  const handleLowerGuess = useCallback(async () => {
-    if (deckID !== undefined && drawnCardState !== null && drawnCardState.remaining > 0) {
-      const nextDrawnCard = await cardService.drawCard(deckID);
-
-      const currentCardValue = CARD_RANKS.get(drawnCardState.cards[0].value) as number;
-      const nextDrawnCardValue = CARD_RANKS.get(nextDrawnCard.cards[0].value) as number;
-
-      setDrawnCardState(nextDrawnCard);
-
-      if (nextDrawnCardValue < currentCardValue) {
-        setPoints(points + 1);
-      } else {
-        setPoints(points - 1);
+      if (guess === 'lower') {
+        if (nextDrawnCardValue < currentCardValue) {
+          setPoints(points + 1);
+          return;
+        } else {
+          setPoints(points - 1);
+          return;
+        }
       }
+
     }
   }, [deckID, drawnCardState, points]);
 
@@ -75,7 +73,6 @@ const App = () => {
 
   useEffect(() => {
     if (drawnCardState !== null) {
-      console.log(drawnCardState.remaining);
       if (points >= 5 && drawnCardState.remaining >= 0) {
         setGameOver(true);
         setUserWin(true);
@@ -96,9 +93,9 @@ const App = () => {
   }, [points, drawnCardState])
   
   return (
-    <div className="App">
+    <div className="app">
 
-      {/* points container */}
+      {/* Points container */}
       <div className='spacing'>
         <p className='points'>POINTS: {points}</p>
       </div>
@@ -114,19 +111,38 @@ const App = () => {
         {/* High guess and low guess buttons */}
         <div className='spacing'>
           <div className='high-low-container'>
-            <Button type='higher' disabled={gameOver} onClick={handleHigherGuess} />
-            <Button type='lower' disabled={gameOver} onClick={handleLowerGuess} />
+            <div className='play-button-container'>
+              <Button type='higher' disabled={gameOver} onClick={() => handleGuess('higher')} />
+            </div>
+            <div className='play-button-container'>
+              <Button type='lower' disabled={gameOver} onClick={() => handleGuess('lower')} />
+            </div>
           </div>
         </div>
 
         {/* Reset game button */}
-        <Button type='reset' disabled={false} onClick={handleResetGame} />
+        <div id='reset-button-container'>
+          <Button type='reset' disabled={false} onClick={() => handleResetGame()} />
+        </div>
 
       </div>
 
       {/* Game over text */}
-      {gameOver === true && userWin && <div className='spacing message'><Banner message='YOU WIN!' /></div>}
-      {gameOver === true && !userWin && <div className='spacing message'><Banner message='YOU LOSE!' /></div>}
+      {gameOver === true && userWin && 
+        <div className='spacing message-container'>
+          <div className='banner-wrapper'>
+            <Banner message='YOU WIN!' />
+          </div>
+        </div>
+      }
+      
+      {gameOver === true && !userWin && 
+        <div className='spacing message-container'>
+          <div className='banner-wrapper'>
+            <Banner message='YOU LOSE!' />
+          </div>
+        </div>
+      }
 
 
     </div>

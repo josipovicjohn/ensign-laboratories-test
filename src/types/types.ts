@@ -22,9 +22,6 @@ export type DrawnCards = {
     remaining: number
 }
 
-export type DiscardCards = {
-    success: boolean,
-    deck_id: string,
-    remaining: number,
-    piles: any
-}
+export type Guess = 
+    | 'higher'
+    | 'lower'

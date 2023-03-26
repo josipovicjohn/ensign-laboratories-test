@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
 }
 
@@ -7,15 +7,27 @@
   width: 200px;
 }
 
-.message {
-  display: grid;
-  justify-content: center;
-}
-
 .high-low-container {
   display: grid;
   grid-template-columns: auto auto;
   gap: 20px;
+}
+
+.play-button-container {
+  width: 90px;
+}
+
+#reset-button-container {
+  width: 200px;
+}
+
+.message-container {
+  display: grid;
+  justify-content: center;
+}
+
+.banner-wrapper {
+  width: 200px;
 }
 
 .points {

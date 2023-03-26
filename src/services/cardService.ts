@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { DECK_OF_CARDS_API_URL } from "../constants/constants";
-import { Deck, DrawnCards, DiscardCards } from "../types/types";
+import { Deck, DrawnCards } from "../types/types";
 
 interface ICardService {
     createNewShuffledDeck: () => Promise<Deck>
     drawCard: (deckID: string) => Promise<DrawnCards>
-    discardCard: (deckID: string, pileName: string, cardCode: string) => Promise<DiscardCards>  
 }
 
 class CardService implements ICardService {
@@ -19,14 +18,6 @@ class CardService implements ICardService {
         const result = await axios.get(`${DECK_OF_CARDS_API_URL}/deck/${deckID}/draw/?count=1`);
         return result.data as DrawnCards
     }
-
-    // Discards card after it has been drawn.
-    // NB: Error checking to be performed for invalid card codes.
-    // NB: Method may not be needed - as you cannot draw already drawn cards from a single deck.
-    public async discardCard(deckID: string, pileName: string, cardCode: string): Promise<DiscardCards> {
-        const result = await axios.get(`${DECK_OF_CARDS_API_URL}/deck/${deckID}/pile/${pileName}/add/?cards=${cardCode}`);
-        return result.data as DiscardCards
-    } 
 
 }
 
