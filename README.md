@@ -35,9 +35,9 @@ The player can reset the game anytime by clicking the `RESET` button.
 - Only 1 deck is used in the game.
 - There are no joker cards.
 - The suit of the playing card is irrelevant.
-- If a player makes `HIGHER` guess for the value of the next card and the value of the next card is
+- If a player makes a `HIGHER` guess for the value of the next card and the value of the next card is
   equal to the value of the current card, they earn a point.
-- If the player does not have a score of at least 5 when all cards in the deck have been served, they lose.
+- If the player does not have a score of at least 5 after all cards in the deck have been served, they lose.
 
 # Available Scripts
 
