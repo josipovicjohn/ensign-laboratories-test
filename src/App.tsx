@@ -13,12 +13,14 @@ const cardService = new CardService();
 
 const App = () => { 
   const [points, setPoints] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
   const [deckID, setDeckID] = useState<undefined | string>(undefined);
   const [drawnCardState, setDrawnCardState] = useState<null | DrawnCards>(null);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [userWin, setUserWin] = useState<null | boolean>(null);
 
   const initGame = useCallback(async () => {
+    setLoading(true);
     const newDeck = await cardService.createNewShuffledDeck();
     const deckID = newDeck.deck_id;
     const drawnCard = await cardService.drawCard(deckID);
@@ -37,6 +39,7 @@ const App = () => {
 
   const handleGuess = useCallback(async (guess: Guess) => {
     if (deckID !== undefined && drawnCardState !== null && drawnCardState.remaining > 0) {
+      setLoading(true);
       const nextDrawnCard = await cardService.drawCard(deckID);
 
       const currentCardValue = CARD_RANKS.get(drawnCardState.cards[0].value) as number;
@@ -100,11 +103,12 @@ const App = () => {
       </div>
 
       {/* Playing card */}
-      {drawnCardState !== null
-        ? <Card imageURL={drawnCardState.cards[0].image} imageCode={drawnCardState.cards[0].code}></Card> 
-        : <div id='spinner-container'><CircularProgress /></div>
-      }
+      <div id='card-container'>
+        {loading && <div><CircularProgress /></div>}
+        {drawnCardState !== null && <Card imageURL={drawnCardState.cards[0].image} imageCode={drawnCardState.cards[0].code} loading={loading} onLoad={() => setLoading(false)}></Card> }
+      </div>
       
+
       {/* Game buttons */}
       <div id='buttons-container'>
         {/* High guess and low guess buttons */}

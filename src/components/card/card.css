@@ -1,4 +1,12 @@
 .playing-card {
     width: 200px;
-    height: auto;
+    height: 280px;
+}
+
+.loading {
+    visibility: hidden;
+}
+
+.loaded {
+    visibility: visible;
 }

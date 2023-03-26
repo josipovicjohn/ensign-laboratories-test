@@ -13,29 +13,31 @@
   gap: 20px;
 }
 
-.play-button-container {
-  width: 90px;
+#card-container {
+  width: 100%;
+  height: 280px;
 }
 
 #reset-button-container {
   width: 200px;
 }
 
-#spinner-container{
-  height: 280px;
+#points {
+  font-weight: bold;
+}
+
+.play-button-container {
+  width: 90px;
 }
 
 .message-container {
   display: grid;
   justify-content: center;
+  min-width: 200px;
 }
 
 .banner-wrapper {
   width: 200px;
-}
-
-#points {
-  font-weight: bold;
 }
 
 .spacing {
