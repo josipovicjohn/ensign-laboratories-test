@@ -1,13 +1,13 @@
-.app {
+#app {
   text-align: center;
 }
 
-.buttons-container {
+#buttons-container {
   display: inline-grid;
   width: 200px;
 }
 
-.high-low-container {
+#high-low-container {
   display: grid;
   grid-template-columns: auto auto;
   gap: 20px;
@@ -21,6 +21,10 @@
   width: 200px;
 }
 
+#spinner-container{
+  height: 280px;
+}
+
 .message-container {
   display: grid;
   justify-content: center;
@@ -30,7 +34,7 @@
   width: 200px;
 }
 
-.points {
+#points {
   font-weight: bold;
 }
 

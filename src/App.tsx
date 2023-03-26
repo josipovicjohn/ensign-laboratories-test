@@ -5,6 +5,7 @@ import Button from './components/button/button';
 import Banner from './components/banner/banner';
 import { DrawnCards, Guess } from './types/types';
 import { CARD_RANKS } from './constants/constants';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import './App.css';
 
@@ -91,24 +92,24 @@ const App = () => {
   }, [points, drawnCardState])
   
   return (
-    <div className="app">
+    <div id="app">
 
       {/* Points container */}
       <div className='spacing'>
-        <p className='points'>POINTS: {points}</p>
+        <p id='points'>POINTS: {points}</p>
       </div>
 
       {/* Playing card */}
       {drawnCardState !== null
         ? <Card imageURL={drawnCardState.cards[0].image} imageCode={drawnCardState.cards[0].code}></Card> 
-        : <></>
+        : <div id='spinner-container'><CircularProgress /></div>
       }
       
       {/* Game buttons */}
-      <div className='buttons-container'>
+      <div id='buttons-container'>
         {/* High guess and low guess buttons */}
         <div className='spacing'>
-          <div className='high-low-container'>
+          <div id='high-low-container'>
             <div className='play-button-container'>
               <Button type='higher' disabled={gameOver} onClick={() => handleGuess('higher')} />
             </div>
@@ -141,7 +142,6 @@ const App = () => {
           </div>
         </div>
       }
-
 
     </div>
   );

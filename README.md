@@ -3,6 +3,11 @@
 This project contains the 'Higher or Lower' game built with React.
 Built with Node v16.16.0 and npm v9.1.3.
 
+To get started, run the following script in the project root:
+```
+npm i
+```
+
 # How to Play
 
 At the start of each game, a deck of playing cards is shuffled and
