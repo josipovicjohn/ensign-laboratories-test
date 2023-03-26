@@ -115,10 +115,10 @@ const App = () => {
         <div className='spacing'>
           <div id='high-low-container'>
             <div className='play-button-container'>
-              <Button type='higher' disabled={gameOver} onClick={() => handleGuess('higher')} />
+              <Button type='higher' disabled={gameOver || loading} onClick={() => handleGuess('higher')} />
             </div>
             <div className='play-button-container'>
-              <Button type='lower' disabled={gameOver} onClick={() => handleGuess('lower')} />
+              <Button type='lower' disabled={gameOver || loading} onClick={() => handleGuess('lower')} />
             </div>
           </div>
         </div>
